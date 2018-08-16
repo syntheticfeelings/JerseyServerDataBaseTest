@@ -4,10 +4,10 @@ package com.syntheticfeelings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.syntheticfeelings.dao.UserDao;
+import com.syntheticfeelings.model.User;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.UUID;
 
 
 @Path("/user")
@@ -15,15 +15,15 @@ public class UserApi {
 
     private Gson gson = new GsonBuilder().create();
 
-//    @POST
-//    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-//    public void addNewUser(@FormParam("first_name") String firstName,
-//                           @FormParam("second_name") String secondName,
-//                           @FormParam("age") int age) {
-//        User user = new User(firstName, secondName, age);
-//
-//        UserDao.getInstance().addUser(user);
-//    }
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public void addNewUser(@FormParam("email") String email,
+                           @FormParam("password") String password,
+                           @FormParam("telephone") int telephone) {
+        User user = new User(email, password, telephone);
+
+        UserDao.getInstance().addUser(user);
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -32,14 +32,12 @@ public class UserApi {
     }
 
     @POST
+    @Path("/authorize")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public String authorizeUser(@FormParam("first_name") String firstName,
-                                @FormParam("second_name") String secondName) {
-        if (UserDao.getInstance().authorizeUser(firstName, secondName) == true) {
-            return UUID.randomUUID().toString();
-        }
-        return "User is not found";
+    public String authorizeUser(@FormParam("email") String email,
+                                @FormParam("password") String password) {
+        return UserDao.getInstance().authorizeUser(email, password);
     }
 }
 

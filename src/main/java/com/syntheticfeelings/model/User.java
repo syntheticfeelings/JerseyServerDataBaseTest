@@ -1,49 +1,28 @@
 package com.syntheticfeelings.model;
 
+import java.util.UUID;
+
 public class User {
 
     private int id;
-    private String firstName;
-    private String secondName;
-    private int age;
+    private String email;
+    private String password;
+    private int telephone;
+    private String uuid;
 
-
-    public User(int id, String firstName, String secondName, int age) {
+    public User(int id, String email, String password, int telephone, String uuid) {
         this.id = id;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.age = age;
+        this.email = email;
+        this.password = password;
+        this.telephone = telephone;
+        this.uuid = uuid;
     }
 
-    public User(String firstName, String secondName, int age) {
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.age = age;
-    }
-
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public User(String email, String password, int telephone) {
+        this.email = email;
+        this.password = password;
+        this.telephone = telephone;
+        this.uuid = UUID.randomUUID().toString();
     }
 
     public int getId() {
@@ -52,5 +31,37 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(int telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

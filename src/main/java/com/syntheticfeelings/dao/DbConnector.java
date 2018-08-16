@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class DbConnector {
 
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432/database_test";
-    private static final String USER = "admin";
-    private static final String PASS = "admin";
+    private static final String DB_URL = "jdbc:postgresql://54.37.125.180:5432/postgres";
+    private static final String USER = "tomcat";
+    private static final String PASS = "tomcat123456";
     private static Connection connection;
     private static Statement statement;
     private static ResultSet resultSet;
